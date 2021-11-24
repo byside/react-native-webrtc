@@ -84,8 +84,26 @@ export default class RTCPeerConnection extends defineCustomEventTarget(...PEER_C
         WebRTCModule.peerConnectionAddStream(stream._reactTag, this._peerConnectionId);
         this._localStreams.push(stream);
     }
+    
+    addTrack(_track: any, stream: MediaStream) {
+        const index = this._localStreams.indexOf(stream);
+        if (index !== -1) {
+            return;
+        }
+        WebRTCModule.peerConnectionAddStream(stream._reactTag, this._peerConnectionId);
+        this._localStreams.push(stream);
+    }
 
     removeStream(stream: MediaStream) {
+        const index = this._localStreams.indexOf(stream);
+        if (index === -1) {
+            return;
+        }
+        this._localStreams.splice(index, 1);
+        WebRTCModule.peerConnectionRemoveStream(stream._reactTag, this._peerConnectionId);
+    }
+    
+    removeTrack(stream: MediaStream) {
         const index = this._localStreams.indexOf(stream);
         if (index === -1) {
             return;
