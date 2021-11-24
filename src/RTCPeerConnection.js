@@ -112,6 +112,17 @@ export default class RTCPeerConnection extends defineCustomEventTarget(...PEER_C
         WebRTCModule.peerConnectionRemoveStream(stream._reactTag, this._peerConnectionId);
     }
 
+    getSenders() {
+        return this.getLocalStreams().map((mediaStream) => {
+            return {
+                id: mediaStream.id,
+                active: mediaStream.active,
+                track: mediaStream.tracks[0],
+                _reactTag: mediaStream._reactTag,
+            };
+        });
+    }
+
     createOffer(options) {
         return new Promise((resolve, reject) => {
             WebRTCModule.peerConnectionCreateOffer(
