@@ -1,14 +1,14 @@
 {
   "name": "react-native-webrtc",
-  "version": "1.92.2",
+  "version": "1.92.3",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-webrtc/react-native-webrtc.git"
+    "url": "git+https://github.com/byside/react-native-webrtc.git"
   },
   "nativePackage": true,
   "description": "WebRTC for React Native",
   "license": "MIT",
-  "homepage": "https://github.com/react-native-webrtc/react-native-webrtc",
+  "homepage": "https://github.com/byside/react-native-webrtc",
   "keywords": [
     "react-component",
     "react-native",
